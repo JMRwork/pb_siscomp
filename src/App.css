@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+}
+
+h2 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  list-style: none;
+  border: 1px solid #ddd;
+  background-color: #f3f3f3;
+}
+
+li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 18px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+li a.active {
+  color: white;
+  background-color: #04AA6D;
+}
+
+ul#logoutMenu {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: steelblue;
+  color: white;
+  height: 50px;
+}
+
+#logoutMenu li b {
+  display: block;
+}
+
+#logoutMenu li span {
+  display: block;
+  padding: 14px 16px;
+  text-align: center;
+}
+
+#logoutMenu li span:hover {
+  color: red;
+  background-color: lightblue;
+}
+
+.container {
+  box-shadow: 1px 1px 3px 2px rgb(0, 0, 0, 0.2);
+  border: 1px solid rgb(0, 0, 0, 0.8);
+  border-radius: 15px;
+  width: auto;
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 20px;
+}
+
+.form {
+  box-shadow: 1px 1px 3px 2px rgb(0, 0, 0, 0.2);
+  border: 1px solid rgb(0, 0, 0, 0.8);
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px auto;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formGroup {
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.formButtons {
+  display: flex;
+  width: 160px;
+  justify-content: space-around;
+  margin: 20px 0px;
+}
+
+.formLabel {
+  display: inline-block;
+  width: 120px;
+  text-align: right;
+}
+
+.formInput {
+  background-color: #ddd;
+  border: #666 solid 1px;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+.errorsContainer {
+  margin: 5px;
+  padding: 5px;
+  color: red;
+}
+
+#hamburgMenu {
+  display: flex;
+  justify-content: center;
+  color: #666;
+  background-color: #f3f3f3;
+}
+
+#hamburgMenu:hover {
+  background-color: #ddd;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 600px) {
+  ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  li a {
+    display: inline-block;
+  }
+
+  nav {
+    display: block;
+  }
+
+  #hamburgMenu {
+    display: none;
+  }
+
+  #menu {
+    display: flex !important;
+    flex-direction: row;
+  }
+}
