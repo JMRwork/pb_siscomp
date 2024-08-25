@@ -71,17 +71,11 @@ export default function FormProdutos({ idEmEdicao, setIdEmEdicao }) {
                 </form>
             </div>
             <div style={{ textAlign: "center" }} className="errorsContainer">
-                {errors.nomeFantasia?.message && (
-                    <div>{errors.nomeFantasia.message}</div>
+                {errors.nome?.message && (
+                    <div>{errors.nome.message}</div>
                 )}
-                {errors.produto?.message && (
-                    <div>{errors.produto.message}</div>
-                )}
-                {errors.razaoSocial?.message && (
-                    <div>{errors.razaoSocial.message}</div>
-                )}
-                {errors.cnpj?.message && (
-                    <div>{errors.cnpj.message}</div>
+                {errors.descricao?.message && (
+                    <div>{errors.descricao.message}</div>
                 )}
             </div>
         </div>

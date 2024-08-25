@@ -1,10 +1,8 @@
 import { Outlet, Link } from "react-router-dom";
-import { useState } from "react";
 import { BarraLogin } from "../componentes";
 import { Menu } from "@mui/icons-material";
 
-export default function Layout() {
-    const [usuario, setUsuario] = useState({ id: "", email: "", senha: "" });
+export default function Layout({ usuario, setUsuario }) {
 
     function handleMenu() {
         const menu = document.getElementById("menu");
@@ -28,18 +26,32 @@ export default function Layout() {
                             <li>
                                 <Link to={"/"}>Início</Link>
                             </li>
-                            <li>
-                                <Link to={"/fornecedores"}>Fornecedores</Link>
-                            </li>
-                            <li>
-                                <Link to={"/contatos"}>Contatos</Link>
-                            </li>
-                            <li>
-                                <Link to={"/produtos"}>Produtos</Link>
-                            </li>
-                            <li>
-                                <Link to={"/cotacoes"}>Cotações</Link>
-                            </li>
+                            {usuario.isActive ? usuario.isAdmin === true ?
+                                <>
+                                    <li>
+                                        <Link to={"/fornecedores"}>Fornecedores</Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/contatos"}>Contatos</Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/produtos"}>Produtos</Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/cotacoes"}>Cotações</Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/gerencia-contas"}>Gerenciar Contas</Link>
+                                    </li>
+                                </>
+                                :
+                                <li>
+                                    <Link to={"/requisicoes"}>Requisições de Compra</Link>
+                                </li>
+                                :
+                                <li>
+                                    <Link to={"/inativo"}>Status do Usuário</Link>
+                                </li>}
                         </ul>
                     </nav>
                     <Outlet context={[usuario, setUsuario]} />

@@ -65,7 +65,7 @@ export default function FormContato({ fornecedores, idEmEdicao, setIdEmEdicao })
                             required: "O Fornecedor deve ser escolhido. Se não houver registre o fornecedor primeiro.",
                         })}>
                             {fornecedores.map((value, index) => {
-                                return <option key={index} value={value.nomeFantasia}>{value.nomeFantasia + "(" + value.produto + ")"}</option>
+                                return <option key={index} value={value.nomeFantasia}>{value.nomeFantasia}</option>
                             })}
                         </select>
                     </div>

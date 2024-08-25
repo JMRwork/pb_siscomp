@@ -1,6 +1,7 @@
 export { default as BarraLogin } from "./Login"
 export { default as Button } from "./Button";
 export { default as Textfield } from "./Textfield"
+export { default as Switch } from "./Switch"
 export { default as ListaContatos } from "./Contatos/Lista"
 export { default as FormContato } from "./Contatos/Form"
 export { default as ListaFornecedores } from "./Fornecedores/Lista"
@@ -9,3 +10,5 @@ export { default as ListaProdutos } from "./Produtos/Lista"
 export { default as FormProduto } from "./Produtos/Form"
 export { default as ListaCotacoes } from "./Cotacoes/Lista"
 export { default as FormCotacao } from "./Cotacoes/Form"
+export { default as ListaRequisicoes } from "./Requisicoes/Lista"
+export { default as FormRequisicao } from "./Requisicoes/Form"

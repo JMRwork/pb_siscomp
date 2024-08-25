@@ -1,10 +1,13 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, redirect } from "react-router-dom";
 import { deslogarUsuario } from "../../infra/usuarios";
 
 export default function BarraLogin({ usuario, setUsuario }) {
 
     if (usuario.id) {
-        return <Logout usuario={usuario} setUsuario={setUsuario} />
+        if (usuario.isActive === false) {
+            redirect("/inativo");
+        }
+        return <Logout usuario={usuario} setUsuario={setUsuario} />;
     } else {
         return (<>
             <nav>
@@ -28,7 +31,7 @@ function Logout({ usuario, setUsuario }) {
     return (
         <nav>
             <ul id="logoutMenu">
-                <li><b>{usuario.email}</b></li>
+                <li><b>{usuario.email}</b>{usuario.isAdmin ? "(Admin)" : "(Colaborador)"}</li>
                 <li onClick={handleClick}><span>Logout</span></li>
             </ul>
         </nav>

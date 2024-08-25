@@ -10,7 +10,7 @@ export default function TelaRegistro() {
         const senha = document.getElementById("novaSenha").value;
         const confirma = document.getElementById("confirma").value;
         if (senha === confirma) {
-            let usuarioVerificado = await criarUsuario(email, senha);
+            let usuarioVerificado = await criarUsuario(email, senha, false);
             if (usuarioVerificado.id) {
                 alert(`Cadastro Efetuado com Sucesso, id: ${usuarioVerificado.id}`);
                 navigate("/login");
@@ -24,7 +24,7 @@ export default function TelaRegistro() {
 
     return (
         <div className="container">
-            <h3>Nova Conta</h3>
+            <h3>Nova Conta (Colaborador)</h3>
             <Textfield label="E-mail" type="text" id="novoEmail" />
             <Textfield label="Senha" type="password" id="novaSenha" />
             <Textfield label="Repita a Senha" type="password" id="confirma" />

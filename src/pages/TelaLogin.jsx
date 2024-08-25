@@ -7,7 +7,7 @@ export default function TelaLogin() {
     const [usuario, setUsuario] = useOutletContext();
     const navigate = useNavigate();
 
-    useEffect(() => { if (usuario.id) { navigate("/"); } }, [usuario])
+    useEffect(() => { if (usuario.isActive === false) { navigate("/inativo"); } else if (usuario.id) { navigate("/") } }, [usuario])
 
     async function handleLogin(event) {
         event.preventDefault();
@@ -15,6 +15,7 @@ export default function TelaLogin() {
         const senha = document.getElementById("senha").value;
         let usuarioVerificado = await logarUsuario(email, senha);
         if (usuarioVerificado.id) {
+            console.log(usuarioVerificado);
             setUsuario(usuarioVerificado);
             alert(`Login Efetuado com Sucesso, id: ${usuarioVerificado.id}`);
         } else {
