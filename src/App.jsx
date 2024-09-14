@@ -13,6 +13,7 @@ import TelaGerencia from "./pages/TelaGerencia";
 import TelaInativo from "./pages/TelaInativo";
 import { useState } from "react";
 import Requisicoes from "./pages/Requisicoes";
+import NovaCotacoes from "./pages/NovaCotacoes";
 
 export default function App() {
   const [usuario, setUsuario] = useState({ id: "", email: "", isActive: "", isAdmin: "" });
@@ -28,6 +29,7 @@ export default function App() {
               <Route path="contatos" element={<Contatos />} />
               <Route path="produtos" element={<Produtos />} />
               <Route path="cotacoes" element={<Cotacoes />} />
+              <Route path="novaCotacoes" element={<NovaCotacoes />} />
               <Route path="gerencia-contas" element={<TelaGerencia />} />
             </>
             :

@@ -1,34 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 
-export default function Requisicoes({ requisicoes, setIdEmEdicao }) {
-    const [requisicao, setRequisicao] = useState("");
+export default function Cotacoes({ cotacoes, requisicoes, setIdEmEdicao }) {
+    const [cotacoesPorRequisicao, setCotacoesPorRequisicao] = useState([]);
+
+    useEffect(() => {
+        setCotacoesPorRequisicao(cotacoes);
+    }, [cotacoes]);
 
     const colunas = [
         {
-            name: 'Produto',
-            selector: row => row.produto.nome,
+            name: 'Fornecedor',
+            selector: row => row.fornecedor,
             sortable: true,
         },
         {
-            name: 'Descrição',
-            selector: row => row.produto.descricao,
+            name: 'Requisição',
+            selector: row => row.requisicao,
             sortable: true,
         },
         {
-            name: 'quantidade',
-            selector: row => row.quantidade,
+            name: 'Descricao',
+            selector: row => row.descricao ? row.descricao : 'Sem descrição',
         },
         {
             name: 'Data',
             selector: row => row.data,
-            sortable: true,
         },
         {
-            name: 'Status',
-            selector: row => row.status,
-            sortable: true,
-        }
+            name: 'Preço',
+            selector: row => row.preco,
+        },
     ];
 
     const opcoes = { rowsPerPageText: 'Linhas por página:', rangeSeparatorText: 'de' };
@@ -44,31 +46,27 @@ export default function Requisicoes({ requisicoes, setIdEmEdicao }) {
     }
 
     function handleRequisicao(event) {
-        let requisicao;
-        if (event.target.value === "") {
-            requisicao = "";
+        const requisicao = event.target.value;
+        if (requisicao === "") {
+            setCotacoesPorRequisicao(cotacoes);
         } else {
-            requisicao = JSON.parse(event.target.value);
+            let cotacoesSelecionadas = cotacoes.filter((cotacao) => cotacao.requisicao === requisicao);
+            setCotacoesPorRequisicao(cotacoesSelecionadas);
         }
-        setRequisicao(requisicao);
     }
 
     return (
         <div>
-            <span>Escolha a Requisição para ver as cotações: </span>
+            <span>Escolha a Requisicao: </span>
             <select onChange={handleRequisicao}>
-                <option value="">Selecione uma requisição...</option>
+                <option value="">Todos</option>
                 {requisicoes.map((requisicao, index) => {
-                    return <option key={index} value={JSON.stringify(requisicao)}>{requisicao.produto.nome + " - " + requisicao.data}</option>
+                    return <option key={index} value={requisicao.id}>{requisicao.produto.nome} - Qtd: {requisicao.quantidade} - {requisicao.produto.descricao}</option>
                 })}
             </select>
-            <div style={{ padding: "20px" }}>
-                {requisicao.cotacoes ? requisicao.cotacoes.map((value, index) => <p key={index}>{value.fornecedor} - Custo: {value.preco} - Data: {value.data}</p>)
-                    : requisicao === "" ? null : <p>Requisição sem cotações.</p>}
-            </div>
             <DataTable
                 columns={colunas}
-                data={requisicoes}
+                data={cotacoesPorRequisicao}
                 pagination
                 paginationPerPage={5}
                 dense

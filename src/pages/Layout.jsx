@@ -41,6 +41,9 @@ export default function Layout({ usuario, setUsuario }) {
                                         <Link to={"/cotacoes"}>Cotações</Link>
                                     </li>
                                     <li>
+                                        <Link to={"/novaCotacoes"}>Cotações via Requisições</Link>
+                                    </li>
+                                    <li>
                                         <Link to={"/gerencia-contas"}>Gerenciar Contas</Link>
                                     </li>
                                 </>

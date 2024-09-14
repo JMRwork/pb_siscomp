@@ -27,7 +27,7 @@ export async function listarRequisicoesPorColaborador(usuarioId) {
 export async function obterRequisicao(id) {
     const docRef = doc(db, "requisicoes", id);
     const docSnap = await getDoc(docRef);
-    return docSnap.data();
+    return { ...docSnap.data(), id };
 }
 
 export async function excluirRequisicao(id) {
